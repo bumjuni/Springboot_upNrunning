@@ -1,10 +1,10 @@
-package com.example.demo;
+package com.spring_practice.sbur_rest_demo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DemoApplicationTests {
+class SburRestDemoApplicationTests {
 
 	@Test
 	void contextLoads() {
