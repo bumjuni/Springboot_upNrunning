@@ -78,7 +78,7 @@ class RestApiDemoCotroller {
 	}
 
 	@PutMapping("/{id}")
-	Coffee putCoffee(@PathVariable String id, @RequestBody Coffee coffee) {
+	ResonseEntity<Coffee> putCoffee(@PathVariable String id, @RequestBody Coffee coffee) {
 		int coffeeIndex = -1;
 
 		for (Coffee c: coffees) {
@@ -87,7 +87,9 @@ class RestApiDemoCotroller {
 				coffees.set(coffeeIndex, coffee);
 			}
 		}
-		return (coffeeIndex == -1) ? postCoffee(coffee) : coffee;
+		return (coffeeIndex == -1) ?
+				new ResponseEntity(postCoffee(coffee), HttpStauts.CREATED)
+				new ResponseEntity(coffee, HttpStatus.OK);
 	}
 
 	@DeleteMapping("/{id}")
