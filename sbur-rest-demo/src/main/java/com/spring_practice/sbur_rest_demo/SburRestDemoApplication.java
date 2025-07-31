@@ -91,7 +91,7 @@ class RestApiDemoCotroller {
 	}
 
 	@DeleteMapping("/coffees/{id}")
-	Coffee deleteCoffee(@PathVariable String id) {
+	void deleteCoffee(@PathVariable String id) {
 		coffees.removeIf(c -> c.getId().equals(id));
 	}
 }
