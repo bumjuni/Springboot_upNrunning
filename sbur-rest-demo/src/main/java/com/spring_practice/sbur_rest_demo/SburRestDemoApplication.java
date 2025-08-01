@@ -2,6 +2,14 @@ package com.spring_practice.sbur_rest_demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @SpringBootApplication
 public class SburRestDemoApplication {
@@ -44,7 +52,7 @@ class RestApiDemoCotroller {
 	private List<Coffee> coffees = new ArrayList<>();
 
 	public RestApiDemoCotroller() {
-		coffess.addAll(List.of(
+		coffees.addAll(List.of(
 				new Coffee("Cafe Cereza"),
 				new Coffee("Cafe Ganador"),
 				new Coffee("Cafe Lareno"),
@@ -78,7 +86,7 @@ class RestApiDemoCotroller {
 	}
 
 	@PutMapping("/{id}")
-	ResonseEntity<Coffee> putCoffee(@PathVariable String id, @RequestBody Coffee coffee) {
+	ResponseEntity<Coffee> putCoffee(@PathVariable String id, @RequestBody Coffee coffee) {
 		int coffeeIndex = -1;
 
 		for (Coffee c: coffees) {
@@ -88,7 +96,7 @@ class RestApiDemoCotroller {
 			}
 		}
 		return (coffeeIndex == -1) ?
-				new ResponseEntity(postCoffee(coffee), HttpStauts.CREATED)
+				new ResponseEntity(postCoffee(coffee), HttpStatus.CREATED) :
 				new ResponseEntity(coffee, HttpStatus.OK);
 	}
 
