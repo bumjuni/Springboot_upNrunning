@@ -24,6 +24,10 @@ class Coffee {
 	private final String id;
 	private String name;
 
+	protected Coffee() {
+		this(UUID.randomUUID().toString(), "");
+	}
+
 	public Coffee(String id, String name) {
 		this.id = id;
 		this.name = name;
